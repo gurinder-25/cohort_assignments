@@ -6,19 +6,34 @@
  */
 
 function wait1(t) {
-
+    return new Promise(function(resolve){
+        setTimeout(resolve, t*1000)
+    })
 }
 
 function wait2(t) {
-
+    return new Promise(function(resolve){
+        setTimeout(resolve, t*1000)
+    })
 }
 
 function wait3(t) {
-
+    return new Promise(function(resolve){
+        setTimeout(resolve, t*1000)
+    })
 }
 
 function calculateTime(t1, t2, t3) {
-
+    const Start_Time = new Date().getTime();
+    const ans = wait1(t1).then(function(){
+        return wait2(t2);
+    }).then(function(){
+        return wait3(t3);
+    }).then(function(){
+        const End_Time = new Date().getTime() - Start_Time;
+        return End_Time;
+    })
+    return ans;
 }
 
 module.exports = calculateTime;
